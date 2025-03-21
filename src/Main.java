@@ -9,6 +9,7 @@ public class Main {
     static Integer myNumber = ThreadLocalRandom.current().nextInt(0, 100 + 1);
     static Integer tries = 0;
     static JLabel text = new JLabel("Enter a number between 0 and 100");
+    static JTextField textField = new JTextField();
 
 
     public static void main(String[] args) {
@@ -25,7 +26,6 @@ public class Main {
 
         text.setBounds(50, 50, 350, 30);
 
-        JTextField textField = new JTextField();
         textField.setBounds(50, 100, 200, 30);
 
         JButton button = new JButton("Guess!");
@@ -33,10 +33,14 @@ public class Main {
 
         button.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                String textFromTextfield = textField.getText();
-                Integer number = Integer.parseInt(textFromTextfield);
-                guess(number);
+            public void actionPerformed(ActionEvent error) {
+                try {
+                    String textFromTextfield = textField.getText();
+                    Integer number = Integer.parseInt(textFromTextfield);
+                    guess(number);
+                } catch (Exception e){
+                    text.setText("Please enter a number!");
+                }
             }
         });
 
@@ -47,30 +51,21 @@ public class Main {
         frame.setVisible(true);
     }
 
-    public static void nextRound() {
-        tries = tries + 1; //or tries++;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter a number: ");
-        Integer number = scanner.nextInt();
-        guess(number);
-    }
-
     public static void guess(Integer number)  {
         if(number == myNumber) {
             System.out.println("Guessed right!");
             System.out.println("It took you " + tries + " tries!");
 
-            text.setText("Guess correctly with" + tries + " attempts");
+            text.setText("Guess correctly with " + tries + " attempts");
 
         } else {
-
+            tries++;
             if(number < myNumber) {
                 text.setText("Guessed false! Your Number is to small!");
             } else {
                 text.setText("Guessed false! Your Number is to big!");
             }
-            //nextRound();
+            textField.setText("");
         }
     }
-
 }
