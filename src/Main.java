@@ -8,6 +8,9 @@ public class Main {
 
     static Integer myNumber = ThreadLocalRandom.current().nextInt(0, 100 + 1);
     static Integer tries = 0;
+    static JLabel text = new JLabel("Enter a number between 0 and 100");
+
+
     public static void main(String[] args) {
         openUI();
         // nextRound();
@@ -20,8 +23,7 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setDefaultLookAndFeelDecorated(true);
 
-        JLabel text = new JLabel("Enter a number between 0 and 100");
-        text.setBounds(50, 50, 200, 30);
+        text.setBounds(50, 50, 350, 30);
 
         JTextField textField = new JTextField();
         textField.setBounds(50, 100, 200, 30);
@@ -57,15 +59,17 @@ public class Main {
         if(number == myNumber) {
             System.out.println("Guessed right!");
             System.out.println("It took you " + tries + " tries!");
+
+            text.setText("Guess correctly with" + tries + " attempts");
+
         } else {
-            System.out.println("Guessed false!");
 
             if(number < myNumber) {
-                System.out.println("Your Number is to small!");
+                text.setText("Guessed false! Your Number is to small!");
             } else {
-                System.out.println("Your Number is to big!");
+                text.setText("Guessed false! Your Number is to big!");
             }
-            nextRound();
+            //nextRound();
         }
     }
 
