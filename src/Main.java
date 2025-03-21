@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -21,7 +23,25 @@ public class Main {
         JLabel text = new JLabel("Enter a number between 0 and 100");
         text.setBounds(50, 50, 200, 30);
 
+        JTextField textField = new JTextField();
+        textField.setBounds(50, 100, 200, 30);
+
+        JButton button = new JButton("Guess!");
+        button.setBounds(50, 150, 200, 30);
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String textFromTextfield = textField.getText();
+                Integer number = Integer.parseInt(textFromTextfield);
+                guess(number);
+            }
+        });
+
         frame.add(text);
+        frame.add(textField);
+        frame.add(button);
+        frame.setLayout(null);
         frame.setVisible(true);
     }
 
