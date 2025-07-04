@@ -10,6 +10,8 @@ A simple console game in which the player must guess a number between 1 and 100.
 
 ✅ End screen with the correct number and the number of attempts
 
+✅ Graphical user interface
+
 ## **🚀 How to play the game:** ##
 1️⃣ Start the program
 
@@ -22,7 +24,7 @@ A simple console game in which the player must guess a number between 1 and 100.
 ## **🔜 Planned expansions:** ##
 Difficulty levels (e.g., up to 1000)
 
-Graphical user interface (GUI)
+Improve graphical user interface
 
 ## **📌 Want to contribute?** ## 
 Pull requests are welcome! 😊
