@@ -6,6 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
 
+    // Zufällige Zahl zwischen 0 und 100 generieren
     static Integer myNumber = ThreadLocalRandom.current().nextInt(0, 100 + 1);
     static Integer tries = 0;
     static JLabel text = new JLabel("Enter a number between 0 and 100");
@@ -17,6 +18,7 @@ public class Main {
         // nextRound();
     }
 
+    // Erstellt die GUI
     public static void openUI(){
         JFrame frame = new JFrame("Guess the Number");
         frame.setSize(400,300);
@@ -31,6 +33,8 @@ public class Main {
         JButton button = new JButton("Guess!");
         button.setBounds(50, 150, 200, 30);
 
+
+        // Ereignis: Wenn der Button geklickt wird
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent error) {
@@ -44,6 +48,8 @@ public class Main {
             }
         });
 
+
+        // Komponenten zum Fenster hinzufügen
         frame.add(text);
         frame.add(textField);
         frame.add(button);
@@ -51,6 +57,8 @@ public class Main {
         frame.setVisible(true);
     }
 
+
+    // Überprüft den gerateten Wert
     public static void guess(Integer number)  {
         if(number == myNumber) {
             System.out.println("Guessed right!");
